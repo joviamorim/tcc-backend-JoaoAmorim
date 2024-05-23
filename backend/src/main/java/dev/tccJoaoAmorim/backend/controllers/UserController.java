@@ -15,12 +15,9 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("/info")
-    public User getUserInfo(@RequestHeader("Authorization") String authorizationHeader) {
-        // Extrair o token de acesso do cabeçalho de autorização
-        //String accessToken = authorizationHeader.replace("Bearer ", "");
 
-        //return userService.getUserInfo(accessToken);
-        return userService.getUserInfo(authorizationHeader);
+    @GetMapping("/info")
+    public User getUserInfo() {
+        return userService.getUserInfo();
     }
 }

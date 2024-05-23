@@ -8,15 +8,25 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class UserService {
 
-    public User getUserInfo(String accessToken) {
+    private final TokenService tokenService;
+
+    public UserService(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
+
+    public User getUserInfo() {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", accessToken);
+        headers.set("Authorization", this.tokenService.getAccessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> entity = new HttpEntity<String>(headers);
-
+        HttpEntity<String> entity = new HttpEntity<>(headers);
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<User> response = restTemplate.exchange("https://api.spotify.com/v1/me", HttpMethod.GET, entity, User.class);
+
+        ResponseEntity<User> response = restTemplate.exchange("https://api.spotify.com/v1/me",
+                HttpMethod.GET,
+                entity,
+                User.class
+        );
 
         if(response.getStatusCode().is2xxSuccessful()) {
             return response.getBody();
