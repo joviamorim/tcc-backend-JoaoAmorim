@@ -12,6 +12,8 @@
  - Aplicar o Client Id, o Client Secret e o Redirect URI do seu APP em um arquivo que o application.properties consiga fazer a leitura, por exemplo em um arquivo chamado application-secrets.properties
  - Salvar o arquivo application-secrets.properties dentro de resources (mesmo caminho de application.properties)
 
+**O .gitignore está configurado para não subir o arquivo application-secrets.properties para não vazar as chaves de seu APP**
+
  ## Código exemplo do application-secrets.properties:
 
  ```
