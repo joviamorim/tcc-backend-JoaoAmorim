@@ -28,7 +28,12 @@ public class SpotifyAuthService {
                 .queryParam("client_secret", clientConfig.getClientSecret())
                 .queryParam("response_type", "code")
                 .queryParam("redirect_uri", clientConfig.getRedirectUri())
-                .queryParam("scope", "playlist-read-private playlist-read-collaborative user-read-private user-read-email user-top-read");
+                .queryParam("scope", "playlist-read-private " +
+                        "playlist-read-collaborative " +
+                        "user-read-private " +
+                        "user-read-email " +
+                        "user-top-read"
+                );
 
         return builder.toUriString();
     }
@@ -36,7 +41,10 @@ public class SpotifyAuthService {
     public void getAccessToken(String code) {
         // Construir o corpo da solicitação para trocar o código de autorização por um token de acesso
         String tokenUrl = "https://accounts.spotify.com/api/token";
-        String requestBody = "grant_type=authorization_code&code=" + code + "&redirect_uri=" + clientConfig.getRedirectUri();
+        String requestBody = "grant_type=authorization_code&code=" +
+                code +
+                "&redirect_uri=" +
+                clientConfig.getRedirectUri();
 
         // Montando o header do request
         HttpHeaders headers = new HttpHeaders();
