@@ -50,10 +50,6 @@ public class Track {
         this.popularity = popularity;
     }
 
-    public Set<TopTracks> getUserTopTracks() {
-        return userTopTracks;
-    }
-
     public void setUserTopTracks(Set<TopTracks> userTopTracks) {
         this.userTopTracks = userTopTracks;
     }

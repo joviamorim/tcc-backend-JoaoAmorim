@@ -49,4 +49,6 @@ public class TrackService {
         );
         return response.getBody();
     }
+
+    public void setTrackFeatures() {}
 }

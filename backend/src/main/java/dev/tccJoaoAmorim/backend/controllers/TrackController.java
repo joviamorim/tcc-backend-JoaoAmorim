@@ -28,5 +28,4 @@ public class TrackController {
     public TopTracks getUserTopTracks() {
         return trackService.getUserTopTracks();
     }
-
 }
