@@ -1,4 +1,4 @@
-# TCC: Desenvolvimento de sistema para reunir dados de músicas e transformá-los em informção através de gráficos e análises.
+# TCC: Desenvolvimento de sistema para reunir dados de músicas e transformá-los em informação através de gráficos e análises.
 
  No momento, está sendo consumida a API do Spotify.
  
