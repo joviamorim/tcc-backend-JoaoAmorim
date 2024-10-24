@@ -21,3 +21,5 @@
  spotify.clientSecret= SEU_CLIENT_SECRET
  spotify.redirectUri= SEU_REDIRECT_URI
  ```
+## Sobre o banco de dados utilizado:
+Optei por utilizar o PostgreSQL, porém sinta-se livre para escolher o seu, já que não fiz nenhum tipo de consulta complexa em SQL dentro de código. Pode ser utilizado um banco em memória, como o H2.
