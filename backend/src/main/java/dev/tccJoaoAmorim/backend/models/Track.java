@@ -1,29 +1,28 @@
 package dev.tccJoaoAmorim.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "tracks")
+/*@Entity
+@Table(name = "tracks")*/
 public class Track {
 
-    @Id
-    @Column(name = "id", unique = true)
+    /*@Id
+    @Column(name = "id", unique = true)*/
     @JsonProperty(value = "id")
     private String id;
 
-    @Column(name = "name")
+    /*@Column(name = "name")*/
     @JsonProperty(value = "name")
     private String name;
 
-    @Column(name = "popularity")
+    /*@Column(name = "popularity")*/
     @JsonProperty(value = "popularity")
     private Integer popularity;
 
-    @OneToMany(mappedBy = "track", cascade = CascadeType.ALL, orphanRemoval = true)
+    /*@OneToMany(mappedBy = "track", cascade = CascadeType.ALL, orphanRemoval = true)*/
     private Set<TopTracks> userTopTracks = new HashSet<>();
 
     public String getId() {

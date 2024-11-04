@@ -25,7 +25,7 @@ public class TrackService {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<TopTracks> response = restTemplate.exchange(
-                "https://api.spotify.com/v1/me/top/tracks?limit=25",
+                "https://api.spotify.com/v1/me/top/tracks?limit=10",
                 HttpMethod.GET,
                 entity,
                 TopTracks.class

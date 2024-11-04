@@ -1,7 +1,6 @@
 package dev.tccJoaoAmorim.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Transient;
 
 public class TrackFeatures {
 
