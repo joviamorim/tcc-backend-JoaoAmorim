@@ -32,7 +32,6 @@ public class SpotifyAuthController {
     public RedirectView getAccessToken(@RequestParam("code") String code) {
         this.spotifyAuthService.getAccessToken(code);
         RedirectView redirectView = new RedirectView();
-        // redirectView.setUrl("/graphic/teste");
         redirectView.setUrl("http://localhost:4200");
 
         return redirectView;

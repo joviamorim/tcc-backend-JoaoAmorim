@@ -2,12 +2,8 @@ package dev.tccJoaoAmorim.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/*@Entity
-@Table(name = "artists")*/
 public class Artist {
 
-    /*@Id
-    @Column(name = "id")*/
     @JsonProperty(value = "id")
     private String id;
 

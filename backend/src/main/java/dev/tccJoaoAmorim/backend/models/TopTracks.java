@@ -4,23 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-/*@Entity
-@Table(name = "top_tracks")*/
 public class TopTracks {
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
     private long id;
 
-    /*@ManyToOne
-    @JoinColumn(name = "user_id")*/
     private User user;
 
-    /*@ManyToOne
-    @JoinColumn(name = "track_id")*/
     private Track track;
 
-    /*@Transient*/
     @JsonProperty(value = "items")
     private List<Track> items;
 

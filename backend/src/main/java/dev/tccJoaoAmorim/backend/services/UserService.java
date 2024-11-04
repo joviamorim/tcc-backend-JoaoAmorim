@@ -5,15 +5,10 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
-
 @Service
 public class UserService {
 
     private final TokenService tokenService;
-
-/*    @Autowired
-    private UserRepository ;userRepository*/
 
     public UserService(TokenService tokenService) {
         this.tokenService = tokenService;
@@ -34,22 +29,10 @@ public class UserService {
         );
 
         if(response.getStatusCode().is2xxSuccessful()) {
-            /*if(!findUserInfo(response.getBody()).equals(response.getBody())){
-                saveUserInfo(response.getBody());
-            }*/
             return response.getBody();
         } else {
             System.err.println("Erro ao obter o perfil do usuário do Spotify. Código de status: " + response.getStatusCode());
             return null;
         }
     }
-
-/*    public void saveUserInfo(User obj) {
-        userRepository.save(obj);
-    }
-
-    public Optional<User> findUserInfo(User obj) {
-        return userRepository.findById(obj.getId());
-    }*/
-
 }
