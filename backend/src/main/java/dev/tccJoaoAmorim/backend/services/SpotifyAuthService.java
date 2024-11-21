@@ -2,7 +2,6 @@ package dev.tccJoaoAmorim.backend.services;
 
 import dev.tccJoaoAmorim.backend.configs.ClientConfig;
 import dev.tccJoaoAmorim.backend.models.TokenResponse;
-import dev.tccJoaoAmorim.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

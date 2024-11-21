@@ -1,7 +1,6 @@
 package dev.tccJoaoAmorim.backend.services;
 
 import dev.tccJoaoAmorim.backend.models.TopTracks;
-import dev.tccJoaoAmorim.backend.models.Track;
 import dev.tccJoaoAmorim.backend.models.TrackFeatures;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class TrackService {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<TopTracks> response = restTemplate.exchange(
-                "https://api.spotify.com/v1/me/top/tracks?limit=25",
+                "https://api.spotify.com/v1/me/top/tracks?limit=10",
                 HttpMethod.GET,
                 entity,
                 TopTracks.class
@@ -49,6 +48,4 @@ public class TrackService {
         );
         return response.getBody();
     }
-
-    public void setTrackFeatures() {}
 }

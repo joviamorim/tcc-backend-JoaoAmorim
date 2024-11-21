@@ -1,33 +1,24 @@
 package dev.tccJoaoAmorim.backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "user_info")
 public class User {
 
-    @Id
-    @Column(name = "id", unique = true)
     @JsonProperty(value = "id")
     private String id;
 
-    @Column(name = "display_name")
     @JsonProperty(value = "display_name")
     private String displayName;
 
-    @Column(name = "email")
     @JsonProperty(value = "email")
     private String email;
 
-    @Column(name = "country")
     @JsonProperty(value = "country")
     private String country;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TopTracks> userTopTracks = new HashSet<>();
 
     public String getId() {
