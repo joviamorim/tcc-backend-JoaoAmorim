@@ -6,6 +6,7 @@ target/
 
 ### Secrets ###
 /src/main/resources/application-secrets.properties
+/src/main/resources/jwt-secrets.properties
 
 ### STS ###
 .apt_generated

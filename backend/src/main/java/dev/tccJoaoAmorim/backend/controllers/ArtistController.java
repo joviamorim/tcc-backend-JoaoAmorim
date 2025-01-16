@@ -2,6 +2,7 @@ package dev.tccJoaoAmorim.backend.controllers;
 
 import dev.tccJoaoAmorim.backend.models.TopArtists;
 import dev.tccJoaoAmorim.backend.services.ArtistService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class ArtistController {
     }
 
     @GetMapping("/top")
-    public TopArtists getUserTopArtists() {
-        return artistService.getUserTopArtists();
+    public TopArtists getUserTopArtists(HttpServletRequest request) {
+        return artistService.getUserTopArtists(request);
     }
 
 
