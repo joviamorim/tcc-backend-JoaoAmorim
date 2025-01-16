@@ -1,8 +1,9 @@
 package dev.tccJoaoAmorim.backend.services;
 
 import dev.tccJoaoAmorim.backend.configs.ClientConfig;
+import dev.tccJoaoAmorim.backend.infra.security.JwtTokenService;
 import dev.tccJoaoAmorim.backend.models.TokenResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,11 +14,14 @@ public class SpotifyAuthService {
 
     private final ClientConfig clientConfig;
     private final TokenService tokenService;
+    private final UserService userService;
+    private final JwtTokenService jwtTokenService;
 
-    @Autowired
-    public SpotifyAuthService(ClientConfig clientConfig, TokenService tokenService) {
+    public SpotifyAuthService(ClientConfig clientConfig, TokenService tokenService, UserService userService, JwtTokenService jwtTokenService) {
         this.clientConfig = clientConfig;
         this.tokenService = tokenService;
+        this.userService =  userService;
+        this.jwtTokenService = jwtTokenService;
     }
 
     public String getAuthCode() {
@@ -37,7 +41,7 @@ public class SpotifyAuthService {
         return builder.toUriString();
     }
 
-    public void getAccessToken(String code) {
+    public String getAccessToken(String code) {
         // Construir o corpo da solicitação para trocar o código de autorização por um token de acesso
         String tokenUrl = "https://accounts.spotify.com/api/token";
         String requestBody = "grant_type=authorization_code&code=" +
@@ -61,13 +65,23 @@ public class SpotifyAuthService {
             TokenResponse responseBody = response.getBody();
 
             if(responseBody != null) {
-                this.tokenService.setAccessToken(responseBody.getTokenType() + " " + responseBody.getAccessToken());
+                return responseBody.getTokenType() + " " + responseBody.getAccessToken();
             }
 
         } else {
             // Se a solicitação falhar, lidar de alguma forma
 
         }
+        return null;
+    }
+
+    public String getJwtToken(String accessToken, String userId) {
+        // gera o token jwt
+        return this.jwtTokenService.generateToken(accessToken, userId);
+    }
+
+    public String getJwtAccessToken(String jwtToken) {
+        return this.jwtTokenService.getJwtAccessToken(jwtToken);
     }
 
 }

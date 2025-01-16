@@ -1,6 +1,5 @@
 package dev.tccJoaoAmorim.backend.controllers;
 
-import dev.tccJoaoAmorim.backend.models.User;
 import dev.tccJoaoAmorim.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/info")
-    public User getUserInfo() {
-        return userService.getUserInfo();
-    }
+//    @GetMapping("/info")
+//    public User getUserInfo(HttpServletRequest request) {
+//        return userService.getUserInfo(request);
+//    }
 }

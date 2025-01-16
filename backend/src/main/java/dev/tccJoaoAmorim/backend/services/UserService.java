@@ -1,6 +1,7 @@
 package dev.tccJoaoAmorim.backend.services;
 
 import dev.tccJoaoAmorim.backend.models.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,9 +15,10 @@ public class UserService {
         this.tokenService = tokenService;
     }
 
-    public User getUserInfo() {
+    public User getUserInfo(String accessToken) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", this.tokenService.getAccessToken());
+
+        headers.set("Authorization", accessToken);
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
